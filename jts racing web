@@ -1,0 +1,401 @@
+echo "# jts-racing-website" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Joshua-Straughan/jts-racing-website.git
+git push -u origin main
+import React, { useState } from 'react';
+import { Trophy, Users, Heart, Mail, Phone, ChevronRight, ExternalLink, CheckCircle } from 'lucide-react';
+
+export default function App() {
+  const [donationAmount, setDonationAmount] = useState('');
+  const [isDonating, setIsDonating] = useState(false);
+
+  const handleDonation = (e) => {
+    e.preventDefault();
+    if (!donationAmount || donationAmount <= 0) return;
+    setIsDonating(true);
+    setTimeout(() => {
+      alert(`Thank you for your generous donation of £${donationAmount}! Your support means everything.`);
+      setIsDonating(false);
+      setDonationAmount('');
+    }, 1500);
+  };
+
+  const achievements = [
+    { title: '5 Wins', description: 'From 19 competitive races' },
+    { title: '9 Podiums', description: 'Consistent top-3 finishes' },
+    { title: '1:49.850', description: 'Toyota Hypercar, Sebring (LMU)' },
+    { title: '1:30.878', description: 'Toyota Hypercar, Fuji (LMU)' },
+  ];
+
+  const sponsorBenefits = [
+    'Branding on race car, suit & helmet',
+    'Social media promotion & content',
+    'PR coverage & media exposure',
+    'Hospitality at race weekends',
+    'Community engagement opportunities',
+    'Inspiring story alignment',
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-900 text-white">
+      {/* Navigation */}
+      <nav className="bg-black/50 backdrop-blur-sm border-b border-gray-800 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center space-x-2">
+              <div className="bg-red-600 text-white font-bold text-sm px-2 py-1 rounded">JTS</div>
+              <span className="text-xl font-bold">JTS Racing</span>
+            </div>
+            <div className="hidden md:flex space-x-8">
+              <a href="#about" className="hover:text-red-400 transition-colors">About</a>
+              <a href="#achievements" className="hover:text-red-400 transition-colors">Achievements</a>
+              <a href="#sponsorship" className="hover:text-red-400 transition-colors">Sponsorship</a>
+              <a href="#support" className="hover:text-red-400 transition-colors">Support</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-r from-gray-900 via-red-900/20 to-gray-900">
+        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              From <span className="text-red-600">Sim</span> to <span className="text-red-600">Reality</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+              "Discipline from the RAF. Speed from Sim Racing. Chasing real-world motorsport dreams."
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="#sponsorship" className="bg-red-600 hover:bg-red-700 px-8 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center">
+                Become a Sponsor <ChevronRight className="ml-2 h-5 w-5" />
+              </a>
+              <a href="#support" className="bg-transparent border-2 border-red-600 hover:bg-red-600/10 px-8 py-3 rounded-lg font-semibold transition-colors">
+                Support My Journey
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 bg-gray-800/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">My Story</h2>
+            <div className="w-24 h-1 bg-red-600 mx-auto"></div>
+          </div>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="flex justify-center">
+              <div className="bg-gray-800 p-8 rounded-lg">
+                <div className="bg-red-600 text-white font-bold text-2xl px-6 py-4 rounded-lg text-center">JTS</div>
+                <p className="text-center mt-4 text-gray-400">Racing Logo</p>
+              </div>
+            </div>
+            <div className="space-y-6">
+              <p className="text-gray-300 leading-relaxed">
+                I'm a competitive sim racer with RAF Air Cadets discipline and determination, preparing to make the leap into real-world racing in the prestigious Ginetta GTA Cup.
+              </p>
+              <p className="text-gray-300 leading-relaxed">
+                Despite living with mild cerebral palsy, I've built an impressive record in sim racing, combining speed, mental toughness, and resilience. My RAF background has instilled the discipline and focus that gives me a competitive edge.
+              </p>
+              <div className="grid grid-cols-2 gap-4 pt-4">
+                <div className="flex items-center space-x-3">
+                  <Users className="h-6 w-6 text-red-600" />
+                  <span>RAF Air Cadets</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Heart className="h-6 w-6 text-red-600" />
+                  <span>Overcoming CP</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="bg-red-600 text-white font-bold text-xs px-2 py-1 rounded">JTS</div>
+                  <span>Sim to Real</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Trophy className="h-6 w-6 text-red-600" />
+                  <span>Race Winner</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Achievements Section */}
+      <section id="achievements" className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Racing Achievements</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              Proven race-winning record with consistency under pressure
+            </p>
+            <div className="w-24 h-1 bg-red-600 mx-auto mt-4"></div>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            {achievements.map((achievement, index) => (
+              <div key={index} className="bg-gray-800/50 p-6 rounded-lg text-center hover:bg-gray-800/70 transition-colors">
+                <div className="text-3xl font-bold text-red-600 mb-2">{achievement.title}</div>
+                <div className="text-gray-400">{achievement.description}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="bg-gray-800/30 rounded-lg p-8">
+            <h3 className="text-2xl font-bold mb-6 text-center">Recent Race Results</h3>
+            <div className="space-y-4 max-w-2xl mx-auto">
+              <div className="flex items-center space-x-4 p-4 bg-gray-800/50 rounded-lg">
+                <div className="bg-red-600 text-white px-3 py-1 rounded font-bold">P1</div>
+                <div>
+                  <div className="font-semibold">BMW GT3 at Sebring (LMU)</div>
+                  <div className="text-gray-400 text-sm">Despite car damage from battling</div>
+                </div>
+              </div>
+              <div className="flex items-center space-x-4 p-4 bg-gray-800/50 rounded-lg">
+                <div className="bg-gray-400 text-white px-3 py-1 rounded font-bold">P2</div>
+                <div>
+                  <div className="font-semibold">LMP2 at Monza (LMU)</div>
+                  <div className="text-gray-400 text-sm">After intense race-long battle</div>
+                </div>
+              </div>
+              <div className="flex items-center space-x-4 p-4 bg-gray-800/50 rounded-lg">
+                <div className="bg-gray-400 text-white px-3 py-1 rounded font-bold">P2</div>
+                <div>
+                  <div className="font-semibold">Lexus GT3 at Portimão (LMU)</div>
+                  <div className="text-gray-400 text-sm">Consistent top-level performance</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sponsorship Section */}
+      <section id="sponsorship" className="py-20 bg-gray-800/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Sponsorship Opportunities</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              Partner with me on my journey to the Ginetta GTA Cup and be part of an inspiring story
+            </p>
+            <div className="w-24 h-1 bg-red-600 mx-auto mt-4"></div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+            <div>
+              <h3 className="text-2xl font-bold mb-6">Why Partner With Me?</h3>
+              <ul className="space-y-4">
+                {sponsorBenefits.map((benefit, index) => (
+                  <li key={index} className="flex items-start space-x-3">
+                    <CheckCircle className="h-6 w-6 text-green-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-300">{benefit}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-gray-800 p-8 rounded-lg">
+              <h4 className="text-xl font-bold mb-4">Sponsorship Packages</h4>
+              <div className="space-y-4">
+                <div className="border-l-4 border-red-600 pl-4 py-2">
+                  <div className="font-semibold">Supporter Club (£50–£200)</div>
+                  <div className="text-gray-400 text-sm">Your name on car/helmet + regular updates</div>
+                </div>
+                <div className="border-l-4 border-blue-600 pl-4 py-2">
+                  <div className="font-semibold">Mid-Level Sponsors</div>
+                  <div className="text-gray-400 text-sm">Full branding + social media + event invites</div>
+                </div>
+                <div className="border-l-4 border-yellow-600 pl-4 py-2">
+                  <div className="font-semibold">Title Partner</div>
+                  <div className="text-gray-400 text-sm">Premium branding + PR coverage + hospitality</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center bg-gray-800/50 p-8 rounded-lg">
+            <h3 className="text-2xl font-bold mb-4">Ready to Partner?</h3>
+            <p className="text-gray-400 mb-6">Let's discuss how we can create a winning partnership</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <a href="mailto:jtsracing@gmail.com" className="flex items-center space-x-2 text-red-400 hover:text-red-300">
+                <Mail className="h-5 w-5" />
+                <span>jtsracing@gmail.com</span>
+              </a>
+              <a href="tel:+447488247760" className="flex items-center space-x-2 text-red-400 hover:text-red-300">
+                <Phone className="h-5 w-5" />
+                <span>+44 7488 247760</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Support/Donation Section */}
+      <section id="support" className="py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Support My Journey</h2>
+            <p className="text-gray-400">
+              Every contribution helps me get closer to my dream of competing in the Ginetta GTA Cup
+            </p>
+            <div className="w-24 h-1 bg-red-600 mx-auto mt-4"></div>
+          </div>
+
+          <div className="bg-gray-800/50 rounded-lg p-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-xl font-bold mb-4">How Your Support Helps</h3>
+                <ul className="space-y-3 text-gray-300">
+                  <li>• Track day testing and real car experience</li>
+                  <li>• Fitness and endurance training programs</li>
+                  <li>• Racing equipment and safety gear</li>
+                  <li>• Entry fees for the Ginetta GTA Cup</li>
+                  <li>• Travel and accommodation for race weekends</li>
+                </ul>
+                <p className="mt-6 text-gray-400">
+                  Your support doesn't just fund racing—it helps inspire others facing similar challenges to pursue their dreams.
+                </p>
+              </div>
+              
+              <div className="bg-gray-800 p-6 rounded-lg">
+                <h3 className="text-xl font-bold mb-4">Make a Donation</h3>
+                <form onSubmit={handleDonation} className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Amount (£)</label>
+                    <input
+                      type="number"
+                      min="1"
+                      value={donationAmount}
+                      onChange={(e) => setDonationAmount(e.target.value)}
+                      className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-red-600"
+                      placeholder="Enter amount"
+                      required
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    disabled={isDonating}
+                    className="w-full bg-red-600 hover:bg-red-700 disabled:bg-red-800 px-6 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center"
+                  >
+                    {isDonating ? 'Processing...' : 'Donate Now'}
+                  </button>
+                </form>
+                <div className="mt-4 text-sm text-gray-400">
+                  <p>All donations go directly toward my racing campaign and preparation for the Ginetta GTA Cup.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-black py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <div className="flex items-center justify-center space-x-2 mb-4">
+              <div className="bg-red-600 text-white font-bold text-sm px-2 py-1 rounded">JTS</div>
+              <span className="text-xl font-bold">JTS Racing</span>
+            </div>
+            <p className="text-gray-400 mb-6">
+              "Discipline from the RAF. Speed from Sim Racing. Chasing real-world motorsport dreams."
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center text-gray-400">
+              <a href="mailto:jtsracing@gmail.com" className="flex items-center space-x-2 hover:text-red-400">
+                <Mail className="h-4 w-4" />
+                <span>jtsracing@gmail.com</span>
+              </a>
+              <a href="tel:+447488247760" className="flex items-center space-x-2 hover:text-red-400">
+                <Phone className="h-4 w-4" />
+                <span>+44 7488 247760</span>
+              </a>
+              <a href="#" className="flex items-center space-x-2 hover:text-red-400">
+                <ExternalLink className="h-4 w-4" />
+                <span>Download Sponsorship Pack</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+{
+  "name": "jts-racing-website",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "lucide-react": "^0.378.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
+    "vite": "^5.2.0"
+  }
+}
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+export default {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
+}
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [react()],
+  build: {
+    outDir: 'dist'
+  }
+});
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JTS Racing – From Sim to Reality</title>
+    <meta name="description" content="RAF Air Cadet sim racer chasing real-world motorsport dreams in the Ginetta GTA Cup. Sponsorship opportunities available." />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.jsx';
+import './index.css';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+);
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
